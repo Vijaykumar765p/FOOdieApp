@@ -1,0 +1,7 @@
+{
+  "name": "ionic3-seatslot",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

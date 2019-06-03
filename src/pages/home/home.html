@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>BMTC Online Booking</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button tappable (click)="logout()">
+        <ion-icon name="custom-logout"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>From location</ion-label>
+    <ion-select [(ngModel)]="locationfrom" (ionChange)="changefromlocation(locationfrom)">
+      <ion-option *ngFor="let locationfrom of locationfromlist" [value]="locationfrom.bustriplocid">{{
+        locationfrom.location }}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>To Location</ion-label>
+    <ion-select [(ngModel)]="locationto" (ionChange)="changetolocation(locationto)">
+      <ion-option *ngFor="let locationto of locationtolist" [value]="locationto.bustriplocid">{{ locationto.location }}</ion-option>
+    </ion-select>
+  </ion-item>
+  <button (click)="findBus()" ion-button full color="teal">Find a Bus</button>
+
+  <br>
+
+  <ion-item>
+    <div id="busDetail" style="display:none;">
+
+      <h3 style="color: #488aff;">
+        Select your bus
+      </h3>
+      <ion-list inset no-lines *ngFor="let bus of BusList" style="margin: 0px;">
+        <ion-grid item-start tappable (tap)="tapEvent(bus.bus_id,bus.trip_id)">
+          <ion-item><img class="profile-image" src="assets/icons/bus1.png" item-left>
+            BUS -
+            <ion-note ion-text color="primary">
+              {{bus.bus_name}}
+            </ion-note>
+            <p>{{bus.b_class}}</p>            
+            <ion-row>
+              <ion-col>
+                <p>Available seats:</p>
+              </ion-col>
+              <ion-col>
+                <p style="margin-left:10px;">10</p>
+              </ion-col>
+            </ion-row>    
+          </ion-item>
+          
+        </ion-grid>
+      </ion-list>
+    </div>
+  </ion-item>
+</ion-content>
